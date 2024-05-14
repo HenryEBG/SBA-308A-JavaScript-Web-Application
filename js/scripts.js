@@ -8,7 +8,7 @@
 
 //objects to be modify
 const productContainer = document.getElementById("productContainer");
-
+const selectCategories = document.getElementById("categories")
 function productdisplay(products) {
   products.forEach(product => {
     const card = document.createElement('div');
@@ -59,3 +59,25 @@ async function getProducts() {
 
 getProducts();
 
+function categorySelect(categories){
+  categories.forEach(category => {
+    const option = document.createElement('option');
+    option.innerHTML=`<option value="${category}">${category}</option>`
+    selectCategories.appendChild(option)
+  })
+  
+}
+
+async function getCategories(){
+  try {
+    const response = await fetch('https://fakestoreapi.com/products/categories');
+    const data = await response.json();
+    console.log(data)
+    categorySelect(data)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+
+getCategories();
