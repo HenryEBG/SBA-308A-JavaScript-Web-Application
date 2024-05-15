@@ -10,6 +10,7 @@
 const productContainer = document.getElementById("productContainer");
 const selectCategories = document.getElementById("categories")
 function productdisplay(products) {
+  productContainer.innerHTML=""
   products.forEach(product => {
     const card = document.createElement('div');
     card.classList.add("col")
@@ -79,5 +80,21 @@ async function getCategories(){
   }
 }
 
-
 getCategories();
+
+async function productsByCategories(event){
+  console.log(event.target.value)
+  let url='https://fakestoreapi.com/products'
+  if(event.target.value!=""){
+    url+=`/category/${event.target.value}`
+  }
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    console.log(data)
+    productdisplay(data)
+  } catch (error) {
+    console.log(error)
+  }
+}
+selectCategories.addEventListener('change', productsByCategories)
