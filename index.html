@@ -63,7 +63,35 @@
                 </div>
             </div>
         </section>
+        <!-- button to show the modal -->
+        <button 
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#modal1"
+
+        >Save Product</button>
+
+        <!-- Make a  Modal -->
+        <div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modal-title">Save a New Product</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error doloremque eligendi, quae omnis optio iste dolore atque earum sed, incidunt explicabo! Nostrum aut adipisci et fugit amet ab aliquid enim.</p>
+                        <label for="modal-email" class="form-label">Your email address:</label>
+                        <input type="email" class="form-control" name="" id="modal-email" placeholder="e.g. mario.example.com">
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+           </div>
+        </div>
         <!-- Footer-->
+
         <footer class="py-5 bg-dark">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
         </footer>
