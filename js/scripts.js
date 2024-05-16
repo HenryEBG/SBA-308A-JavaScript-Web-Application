@@ -8,9 +8,18 @@
 
 //objects to be modify
 const productContainer = document.getElementById("productContainer");
-const selectCategories = document.getElementById("categories")
-function productdisplay(products) {
+const selectCategories = document.getElementById("categories");
+const selectNewCategory = document.getElementById("modal-category");
+
+let newProductID=21;
+const newProducts=[];
+const deletedProducts=[];
+const modifiedProducts=[];
+
+function productDisplay(products,erase) {
+  if(erase){
   productContainer.innerHTML=""
+  }
   products.forEach(product => {
     const card = document.createElement('div');
     card.classList.add("col")
@@ -52,7 +61,7 @@ async function getProducts() {
     const response = await fetch('https://fakestoreapi.com/products');
     const data = await response.json();
     console.log(data)
-    productdisplay(data)
+    productdisplay(data,true)
   } catch (error) {
     console.log(error)
   }
@@ -62,18 +71,21 @@ getProducts();
 
 function categorySelect(categories){
   categories.forEach(category => {
+    const newOption = document.createElement('option');
     const option = document.createElement('option');
+    newOption.innerHTML=`<option value="${category}">${category}</option>`
     option.innerHTML=`<option value="${category}">${category}</option>`
+    selectNewCategory.appendChild(newOption)
     selectCategories.appendChild(option)
   })
   
 }
 
+
 async function getCategories(){
   try {
     const response = await fetch('https://fakestoreapi.com/products/categories');
     const data = await response.json();
-    console.log(data)
     categorySelect(data)
   } catch (error) {
     console.log(error)
@@ -92,7 +104,8 @@ async function productsByCategories(event){
     const response = await fetch(url);
     const data = await response.json();
     console.log(data)
-    productdisplay(data)
+    productDisplay(data,true)
+    ProductDisplay(newProducts.filter(product => product.category==event.target.value),false)
   } catch (error) {
     console.log(error)
   }

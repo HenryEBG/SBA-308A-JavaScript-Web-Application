@@ -22,7 +22,8 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">New Product</a></li>
+                        <li class="nav-item"><a class="nav-link"  data-bs-toggle="modal"
+                            data-bs-target="#modal1" href="#!">New Product</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">Delete Product</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">Filter <select name="categories" id="categories"><option value="">All Products</option></select></a></li>
 
@@ -77,15 +78,30 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="modal-title">Save a New Product</h5>
+
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error doloremque eligendi, quae omnis optio iste dolore atque earum sed, incidunt explicabo! Nostrum aut adipisci et fugit amet ab aliquid enim.</p>
-                        <label for="modal-email" class="form-label">Your email address:</label>
-                        <input type="email" class="form-control" name="" id="modal-email" placeholder="e.g. mario.example.com">
+                        <form action="">
+                            <label for="modal-name" class="form-label">Title:</label>
+                            <input type="text" class="form-control" name="modal-name" id="modal-name" placeholder=" Example: Mens Cotton Jacket">   
+                            <label for="modal-price" class="form-label">Price:</label>
+                            <input type="number" class="form-control" name="modal-price" id="modal-price" placeholder="Example: 20.78">   
+                            <label for="modal-description" class="form-label">Description:</label>
+                            <textarea name="modal-description" id="modal-description" class="form-control" rows="3"></textarea>
+                            <label for="modal-image" class="form-label">Image:</label>
+                            <input type="text"  class="form-control" name="modal-image" id="modal-image" placeholder="Example: http://server.com/myimage01.jpg">
+                            <label for="modal-category" class="form-label">Category:</label>
+                            <select name="modal-category" class="form-control" id="modal-category">
+                               
+                            </select>
+
+                            <button class="btn btn-primary form-control mt-4" type="submit">Add Product</button>
+                        </form>
+                       
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary">Submit</button>
+                        <!-- <button class="btn btn-primary">Submit</button> -->
                     </div>
                 </div>
            </div>
