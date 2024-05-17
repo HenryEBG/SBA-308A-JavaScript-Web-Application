@@ -6,108 +6,50 @@
 // This file is intentionally blank
 // Use this file to add JavaScript to your project
 
+
+//import files
+import {deleteProduct} from './apiDeleteConsumers.js';
+import { addProduct } from './apiPostConsumers.js';
+import { getProducts,getCategories,productsByCategories } from './apiGetConsumers.js';
+
+
 //objects to be modify
 const productContainer = document.getElementById("productContainer");
 const selectCategories = document.getElementById("categories");
-const selectNewCategory = document.getElementById("modal-category");
+
+const formNewProduct = document.getElementById("form_new_product")
+const cards = document.getElementsByClassName("card");
+
 
 let newProductID=21;
 const newProducts=[];
 const deletedProducts=[];
 const modifiedProducts=[];
 
-function productDisplay(products,erase) {
-  if(erase){
-  productContainer.innerHTML=""
-  }
-  products.forEach(product => {
-    const card = document.createElement('div');
-    card.classList.add("col")
-    card.classList.add("mb-5")
-    card.innerHTML = `<div class="card h-100">
-    <!-- Sale badge-->
-    <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-    <!-- Product image-->
-    <img class="card-img-top h-50" src=${product.image} alt="..."  />
-    <!-- Product details-->
-    <div class="card-body p-4">
-        <div class="text-center">
-            <!-- Product name-->
-            <h5 class="fw-bolder">${product.title}</h5>
-            <!-- Product reviews-->
-            <div class="d-flex justify-content-center small text-warning mb-2">
-                <div class="bi-star-fill"></div>
-                <div class="bi-star-fill"></div>
-                <div class="bi-star-fill"></div>
-                <div class="bi-star-fill"></div>
-                <div class="bi-star-fill"></div>
-            </div>
-            <!-- Product price-->
-            $${product.price}
-        </div>
-    </div>
-    <!-- Product actions-->
-    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent d-flex justify-content-center ">
-        <div class="text-center"><a class="btn btn-outline-dark mt-auto ml-2" href="#">VO</a></div>
-        <div class="text-center"><a class="btn btn-outline-dark mt-auto ml-2" href="#">C</a></div>
-    </div>
-</div>`
-productContainer.appendChild(card);
-  });
-}
-//create the fetch
-async function getProducts() {
-  try {
-    const response = await fetch('https://fakestoreapi.com/products');
-    const data = await response.json();
-    console.log(data)
-    productdisplay(data,true)
-  } catch (error) {
-    console.log(error)
-  }
-}
-
 getProducts();
-
-function categorySelect(categories){
-  categories.forEach(category => {
-    const newOption = document.createElement('option');
-    const option = document.createElement('option');
-    newOption.innerHTML=`<option value="${category}">${category}</option>`
-    option.innerHTML=`<option value="${category}">${category}</option>`
-    selectNewCategory.appendChild(newOption)
-    selectCategories.appendChild(option)
-  })
-  
-}
-
-
-async function getCategories(){
-  try {
-    const response = await fetch('https://fakestoreapi.com/products/categories');
-    const data = await response.json();
-    categorySelect(data)
-  } catch (error) {
-    console.log(error)
-  }
-}
 
 getCategories();
 
-async function productsByCategories(event){
-  console.log(event.target.value)
-  let url='https://fakestoreapi.com/products'
-  if(event.target.value!=""){
-    url+=`/category/${event.target.value}`
+
+selectCategories.addEventListener('change', productsByCategories)
+
+
+formNewProduct.addEventListener('submit',addProduct)
+
+
+
+
+
+
+function modifyDeleteProduct(event){
+  event.preventDefault();
+  
+  if(event.target.id.substring(0,6)==="delete"){
+    deleteProduct(parseInt(event.target.id.substring(7,8)))
   }
-  try {
-    const response = await fetch(url);
-    const data = await response.json();
-    console.log(data)
-    productDisplay(data,true)
-    ProductDisplay(newProducts.filter(product => product.category==event.target.value),false)
-  } catch (error) {
-    console.log(error)
+  else {
+    modifyProduct(parseInt(event.target.id.substring(7,8)))
   }
 }
-selectCategories.addEventListener('change', productsByCategories)
+
+productContainer.addEventListener('click',modifyDeleteProduct)

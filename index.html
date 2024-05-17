@@ -82,21 +82,21 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="">
-                            <label for="modal-name" class="form-label">Title:</label>
-                            <input type="text" class="form-control" name="modal-name" id="modal-name" placeholder=" Example: Mens Cotton Jacket">   
-                            <label for="modal-price" class="form-label">Price:</label>
-                            <input type="number" class="form-control" name="modal-price" id="modal-price" placeholder="Example: 20.78">   
-                            <label for="modal-description" class="form-label">Description:</label>
-                            <textarea name="modal-description" id="modal-description" class="form-control" rows="3"></textarea>
-                            <label for="modal-image" class="form-label">Image:</label>
-                            <input type="text"  class="form-control" name="modal-image" id="modal-image" placeholder="Example: http://server.com/myimage01.jpg">
-                            <label for="modal-category" class="form-label">Category:</label>
-                            <select name="modal-category" class="form-control" id="modal-category">
+                        <form action="" id="form_new_product">
+                            <label for="modal_name" class="form-label">Title:</label>
+                            <input type="text" class="form-control" name="modal_name" id="modal_name" placeholder=" Example: Mens Cotton Jacket">   
+                            <label for="modal_price" class="form-label">Price:</label>
+                            <input type="number" class="form-control" name="modal_price" id="modal_price" placeholder="Example: 20.78">   
+                            <label for="modal_description" class="form-label">Description:</label>
+                            <textarea name="modal_description" id="modal_description" class="form-control" rows="3"></textarea>
+                            <label for="modal_image" class="form-label">Image:</label>
+                            <input type="text"  class="form-control" name="modal_image" id="modal_image" placeholder="Example: http://server.com/myimage01.jpg">
+                            <label for="modal_category" class="form-label">Category:</label>
+                            <select name="modal_category" class="form-control" id="modal_category">
                                
                             </select>
 
-                            <button class="btn btn-primary form-control mt-4" type="submit">Add Product</button>
+                            <button class="btn btn-primary form-control mt-4" id="btnNewProduct"  type="submit">Add Product</button>
                         </form>
                        
                     </div>
@@ -114,6 +114,6 @@
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
+        <script type="module" src="js/scripts.js"></script>
     </body>
 </html>
