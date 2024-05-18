@@ -30,3 +30,6 @@ Include the functions to use the API with the method POST and PUT
 Include the functions to display the elements in the index.html file.
 - categorySelect  add elements option to the selects inside the modals and the filter in the navbar
 - productDisplay add card elements to the principal container in the index.html file to show the products.
+
+### Bootstrap Template
+The project used a free boostrap template. 
