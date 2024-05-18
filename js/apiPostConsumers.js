@@ -1,7 +1,15 @@
+/**
+ * Nodes pointing to the modals forms to create or modify a product
+ */
 const formNewProduct = document.getElementById("form_new_product")
 const formUpdateProduct =document.getElementById("form_update_product")
+/**
+ * Nodes to the alerts inside the modals to show after create or modify a product
+ */
 const updateAlert=document.getElementById("updateAlert")
 const newAlert=document.getElementById("addAlert")
+
+//Async function using a POST method to add a fake product
 async function addProduct(event){
 
   event.preventDefault();
@@ -30,6 +38,7 @@ async function addProduct(event){
   }
 }
 
+//Async funtion to modify a product using an API using a PUT method
 async function modifyProduct(event) {
   event.preventDefault();
   try {
@@ -57,6 +66,5 @@ async function modifyProduct(event) {
   }
 }
 
-
-
+//exports functions to the script.js file
 export {addProduct,modifyProduct};

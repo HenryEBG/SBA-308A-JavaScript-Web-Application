@@ -1,7 +1,9 @@
+//Nodes pointing to the diferent select inside the modals and the filter in the main page
 const selectNewCategory = document.getElementById("modal_category");
 const selectCategories = document.getElementById("categories");
 const selectUpdate= document.getElementById("update_category");
 
+//function that add all the products or the products of one category
 function productDisplay(products,erase) {
   if(erase){
   productContainer.innerHTML=""
@@ -44,6 +46,7 @@ productContainer.appendChild(card);
 }
 
 
+//fuction that add option elements to the select categories to filter or select in the modals
 function categorySelect(categories){
   categories.forEach(category => {
     const newOption = document.createElement('option');
@@ -59,4 +62,5 @@ function categorySelect(categories){
   
 }
 
+//export the fuctions to the apigetConsumers.js file
 export {categorySelect,productDisplay}
