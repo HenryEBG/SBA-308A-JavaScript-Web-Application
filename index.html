@@ -21,29 +21,10 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
+                        <!-- <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li> -->
                         <li class="nav-item"><a class="nav-link"  data-bs-toggle="modal"
                             data-bs-target="#modal1" href="#!">New Product</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Delete Product</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">Filter <select name="categories" id="categories"><option value="">All Products</option></select></a></li>
-
-                        <!-- <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#!"></a></li>
-                                <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-                                <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <form class="d-flex">
-                        <button class="btn btn-outline-dark" type="submit">
-                            <i class="bi-cart-fill me-1"></i>
-                            Cart
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                        </button>
-                    </form> -->
                 </div>
             </div>
         </nav>
@@ -56,6 +37,13 @@
                 </div>
             </div>
         </header>
+        <!-- Alert section -->
+
+
+          <div class="alert alert-danger text-center" style="display: none" id="deleteAlert" role="alert">
+            This is a danger alert—check it out!
+          </div>
+
         <!-- Section-->
         <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
@@ -72,7 +60,7 @@
 
         >Save Product</button>
 
-        <!-- Make a  Modal -->
+        <!-- Make a  Modal  to add a Product-->
         <div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -86,7 +74,7 @@
                             <label for="modal_name" class="form-label">Title:</label>
                             <input type="text" class="form-control" name="modal_name" id="modal_name" placeholder=" Example: Mens Cotton Jacket">   
                             <label for="modal_price" class="form-label">Price:</label>
-                            <input type="number" class="form-control" name="modal_price" id="modal_price" placeholder="Example: 20.78">   
+                            <input type="number"  step="0.01" min="1" max="1000"  class="form-control" name="modal_price" id="modal_price" placeholder="Example: 20.78">   
                             <label for="modal_description" class="form-label">Description:</label>
                             <textarea name="modal_description" id="modal_description" class="form-control" rows="3"></textarea>
                             <label for="modal_image" class="form-label">Image:</label>
@@ -101,11 +89,53 @@
                        
                     </div>
                     <div class="modal-footer">
-                        <!-- <button class="btn btn-primary">Submit</button> -->
+                        <div class="alert alert-success text-center "  style="display: none" id="addAlert" role="alert">
+                            The Product was added!
+                          </div>
                     </div>
                 </div>
            </div>
         </div>
+
+
+<!-- Make a  Modal  to update a Product-->
+<div class="modal fade" id="modal2" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal-title">Update a Product</h5>
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="" id="form_update_product">
+                    <input type="hidden" id="id" name="id">
+                    <label for="update_name" class="form-label">Title:</label>
+                    <input type="text" class="form-control" name="update_name" id="update_name" placeholder=" Example: Mens Cotton Jacket">   
+                    <label for="update_price" class="form-label">Price:</label>
+                    <input type="number" step="0.01" min="1" max="1000" class="form-control" name="update_price" id="update_price" placeholder="Example: 20.78">   
+                    <label for="update_description" class="form-label">Description:</label>
+                    <textarea name="update_description" id="update_description" class="form-control" rows="3"></textarea>
+                    <label for="update_image" class="form-label">Image:</label>
+                    <input type="text"  class="form-control" name="update_image" id="update_image" placeholder="Example: http://server.com/myimage01.jpg">
+                    <label for="update_category" class="form-label">Category:</label>
+                    <select name="update_category" class="form-control" id="update_category">
+                       
+                    </select>
+
+                    <button class="btn btn-primary form-control mt-4" id="btnUpdateProduct"  type="submit">Update Product</button>
+                </form>
+               
+            </div>
+            <div class="modal-footer">
+                <div class="alert alert-info text-center " style="display: none" id="updateAlert" role="alert">
+                    This is a info alert—check it out!
+                  </div>
+            </div>
+        </div>
+   </div>
+</div>        
+
         <!-- Footer-->
 
         <footer class="py-5 bg-dark">

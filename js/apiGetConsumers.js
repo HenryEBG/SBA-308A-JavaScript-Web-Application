@@ -1,5 +1,5 @@
 //create the fetch
-
+const myUpdateForm=document.getElementById('form_update_product')
 import { productDisplay,categorySelect } from './display.js';
 async function getProducts() {
   try {
@@ -39,4 +39,22 @@ async function productsByCategories(event){
   }
 }
 
-export {productsByCategories, getCategories,getProducts}
+
+async function productById(productId){
+  try {
+      const response = await fetch(`https://fakestoreapi.com/products/${productId}`);
+      const data = await response.json();
+      //agregar el id
+      myUpdateForm.id.value=data.id;
+      myUpdateForm.update_name.value=data.title;
+      myUpdateForm.update_price.value=data.price;
+      myUpdateForm.update_description.value=data.description;
+      myUpdateForm.update_image.value=data.image;
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+
+
+export {productsByCategories, getCategories,getProducts,productById}

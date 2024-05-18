@@ -9,8 +9,8 @@
 
 //import files
 import {deleteProduct} from './apiDeleteConsumers.js';
-import { addProduct } from './apiPostConsumers.js';
-import { getProducts,getCategories,productsByCategories } from './apiGetConsumers.js';
+import { addProduct,modifyProduct } from './apiPostConsumers.js';
+import { getProducts,getCategories,productsByCategories,productById } from './apiGetConsumers.js';
 
 
 //objects to be modify
@@ -18,6 +18,7 @@ const productContainer = document.getElementById("productContainer");
 const selectCategories = document.getElementById("categories");
 
 const formNewProduct = document.getElementById("form_new_product")
+const formUpdateProduct = document.getElementById("form_update_product")
 const cards = document.getElementsByClassName("card");
 
 
@@ -48,8 +49,13 @@ function modifyDeleteProduct(event){
     deleteProduct(parseInt(event.target.id.substring(7,8)))
   }
   else {
-    modifyProduct(parseInt(event.target.id.substring(7,8)))
+
+    productById(parseInt(event.target.id.substring(7,8)))
   }
 }
 
+
 productContainer.addEventListener('click',modifyDeleteProduct)
+
+
+formUpdateProduct.addEventListener('submit',modifyProduct)
